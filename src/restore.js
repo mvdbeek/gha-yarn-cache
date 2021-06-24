@@ -42,8 +42,10 @@ async function run() {
   const os = await uname();
   const cachePath = await yarnCache();
   core.saveState("YARN_CACHE_PATH", cachePath);
+  
+  const yarnLockFile = core.getInput('yarn-lock-file');
 
-  const hash = md5File.sync("yarn.lock");
+  const hash = md5File.sync(yarnLockFile);
 
   const primaryKey = `${os}-yarn-cache-${hash}`;
   const restoreKey = `${os}-yarn-cache-`;
