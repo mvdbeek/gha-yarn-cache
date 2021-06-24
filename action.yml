@@ -1,6 +1,11 @@
 name: 'Yarn install cache'
 author: 'c-hive'
 description: '1-liner yarn install cache for GitHub Actions'
+inputs:
+  yarn-lock-file:  # id of input
+    description: 'Yarn.lock file used for cache hash'
+    required: true
+    default: 'yarn.lock'
 runs:
   using: 'node12'
   main: 'dist/restore/index.js'
